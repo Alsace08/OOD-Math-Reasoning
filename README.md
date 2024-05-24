@@ -1,14 +1,16 @@
-## Trajectory Volatility for Out-of-Distribution Detection in Mathematical Reasoning
+# Trajectory Volatility for Out-of-Distribution Detection in Mathematical Reasoning
 
-The overview and official implementation of **TV score** used in **OOD Math Detection**. Details are shown in [our paper](https://arxiv.org/abs/2405.14039).
+The overview and official implementation of **TV score** used in **OOD Detection in Mathematical Reasoning**. 
+
+Details are shown in [our paper](https://arxiv.org/abs/2405.14039).
 
 ---
 
-### Overview
+## Overview
 
-#### Why Trajectory as the measure?
+### Why Trajectory as the measure?
 
-**Disadvantages of input/output embedding space:**
+#### a. Disadvantages of input/output embedding space:
 
 * *Input Space*: Low distinction between different domains
 
@@ -22,7 +24,7 @@ The overview and official implementation of **TV score** used in **OOD Math Dete
 
 
 
-**Advantages of input->output embedding shift trajectory:**
+#### b. Advantages of input->output embedding shift trajectory:
 
 * Constraints on trajectory endpoints in mathematical reasoning allow for a greater likelihood of variation in trajectory volatility under different samples. 
 
@@ -31,9 +33,9 @@ The overview and official implementation of **TV score** used in **OOD Math Dete
 <img src="ASSETS/trajectory.png" width="80%" height="80%" />
 </div>
 
-#### What is TV score?
+### What is TV score?
 
-A trajectory-based algorithm TV to detect OOD samples in mathematical reasoning scenarios.
+A trajectory-based algorithm to detect OOD samples in mathematical reasoning scenarios.
 
 **Algorithm Pipeline:**
 
@@ -43,15 +45,15 @@ We denote $\boldsymbol{y_l}$ as the embedding of $l$-th layer, $\mathcal{G}_l = 
 * *Step 1*: Mahalanobis Distance Mapping 
 
 $$
-\mathcal{N}({\boldsymbol \mu}_l^{(k)}, {\boldsymbol \Sigma}_l^{(k)}) = \mathcal{N}(\sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i {\boldsymbol \mu}_{l+k}, ~\sum_{i=0}^k \mathrm{C}_k^i {\boldsymbol \Sigma}_{l+k}),
+\mathcal{N}(\boldsymbol{\mu}_l^{(k)}, \boldsymbol{\Sigma}_l^{(k)}) = \mathcal{N}(\sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i \boldsymbol{\mu}_{l+k}, \sum_{i=0}^k \mathrm{C}_k^i \boldsymbol{\Sigma}_{l+k}),
 $$
 
 $$
-{\boldsymbol y_l^{(k)}} = \sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i {\boldsymbol y}_{l+k}
+\boldsymbol{y_l^{(k)}} = \sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i \boldsymbol{y}_{l+k}
 $$
 
 $$
-f^{(k)}(\boldsymbol{y}_l) = \left[{\boldsymbol y_l^{(k)}} - {\boldsymbol \mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[{\boldsymbol y_l^{(k)}} - {\boldsymbol \mu_l^{(k)}}\right]
+f^{(k)}(\boldsymbol{y}_l) = \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[\boldsymbol{y_l^{(k)}} - {\boldsymbol \mu_l^{(k)}}\right]
 $$
 
 
