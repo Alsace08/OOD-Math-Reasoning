@@ -48,20 +48,16 @@ We denote $\boldsymbol{y_l}$ as the embedding of $l$-th layer, $\mathcal{G}_l = 
 
 * *Step 1*: Mahalanobis Distance Mapping 
 
-$$
-\mathcal{N}(\boldsymbol{\mu}_l^{(k)}, \boldsymbol{\Sigma}_l^{(k)}) = \mathcal{N}(\sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i \boldsymbol{\mu}_{l+k}, \sum_{i=0}^k \mathrm{C}_k^i \boldsymbol{\Sigma}_{l+k}),
-\\
-\boldsymbol{y_l^{(k)}} = \sum_{i=0}^k (-1)^{k+i} \mathrm{C}_k^i \boldsymbol{y}_{l+k}
-\\
-f^{(k)}(\boldsymbol{y}_l) = \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[\boldsymbol{y_l^{(k)}} - {\boldsymbol \mu_l^{(k)}}\right]
-$$
+$$ \mathcal{N}(\boldsymbol{\mu}_{l}^{(k)}, \boldsymbol{\Sigma}_{l}^{(k)}) = \mathcal{N}(\sum_{i=0}^{k} (-1)^{k+i} \mathrm{C}_{k}^{i} \boldsymbol{\mu}_{l+k}, \sum_{i=0}^{k} \mathrm{C}_{k}^{i} \boldsymbol{\Sigma}_{l+k}), $$
+
+$$ \boldsymbol{y_{l}^{(k)}} = \sum_{i=0}^{k} (-1)^{k+i} \mathrm{C}_{k}^{i} \boldsymbol{y}_{l+k}, $$
+
+$$ f^{(k)}(\boldsymbol{y}_l) = \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right] $$
 
 
 * *Step 2*:  Average of Absolute Value Difference
 
-$$
-\text{TV score} := \frac{1}{L-k-1} \sum_{l=1}^{L-k-1}  \left| f^{(k)}(\boldsymbol{y}_l) - f^{(k)}(\boldsymbol{y}_{l-1}) \right|
-$$
+$$ \text{TV score} := \frac{1}{L-k-1} \sum_{l=1}^{L-k-1}  \left| f^{(k)}(\boldsymbol{y}_l) - f^{(k)}(\boldsymbol{y}_{l-1}) \right| $$
 
 
 TV score w/o Differential Smoothing when $k = 0$, w/ Differential Smoothing when $k>0$.
