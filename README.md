@@ -66,7 +66,7 @@ $$
 
 TV score w/o Differential Smoothing when $k = 0$, w/ Differential Smoothing when $k>0$.
 
----
+
 
 
 
