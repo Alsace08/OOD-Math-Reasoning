@@ -1,0 +1,10 @@
+__pycache__/
+wandb/
+Checkpoints/gpt2-xl_MultiArith/checkpoint-*/
+Checkpoints/gpt2-xl_MultiArith/runs/
+Checkpoints/llama2-7b_MultiArith/checkpoint-*/
+Checkpoints/llama2-7b_MultiArith/runs/
+Data/Inference_Data/llama2-7b/
+Data/Inference_Data/gpt2-xl/
+Data/Score_Data/llama2-7b/
+Data/Score_Data/gpt2-xl/

@@ -1,0 +1,2 @@
+Checkpoint storage path.
+Please create a folder here with a corresponding name for each of your base models.
