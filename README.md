@@ -48,17 +48,35 @@ We denote $\boldsymbol{y_l}$ as the embedding of $l$-th layer, $\mathcal{G}_l = 
 $$ \boldsymbol{y_{l}^{(k)}} = \sum_{i=0}^{k} (-1)^{k+i} \mathrm{C}_{k}^{i} \boldsymbol{y}_{l+k}, $$
 
 $$ f^{(k)}(\boldsymbol{y}_l) = \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right] $$ -->
-<div align=center>
+
+$$
+\begin{equation}
+  \begin{aligned}
+    \mathcal{N}(\boldsymbol{\mu}_{l}^{(k)}, \boldsymbol{\Sigma}_{l}^{(k)}) &= \mathcal{N}(\sum_{i=0}^{k} (-1)^{k+i} \mathrm{C}_{k}^{i} \boldsymbol{\mu}_{l+k}, \sum_{i=0}^{k} \mathrm{C}_{k}^{i} \boldsymbol{\Sigma}_{l+k}), \\
+    \boldsymbol{y_{l}^{(k)}} &= \sum_{i=0}^{k} (-1)^{k+i} \mathrm{C}_{k}^{i} \boldsymbol{y}_{l+k}, \\
+    f^{(k)}(\boldsymbol{y}_l) &= \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right]^{\top} \left[ \Sigma_l^{(k)} \right]^{-1} \left[\boldsymbol{y_l^{(k)}} - \boldsymbol{\mu_l^{(k)}}\right] 
+  \end{aligned}
+\end{equation}
+$$
+
+<!-- <div align=center>
 <img src="ASSETS/step1.png" width="50%" height="50%" />
-</div>
+</div> -->
 
 
 * *Step 2*:  Average of Absolute Value Difference
 
 <!-- $$ \text{TV score} := \frac{1}{L-k-1} \sum_{l=1}^{L-k-1}  \left| f^{(k)}(\boldsymbol{y}_l) - f^{(k)}(\boldsymbol{y}_{l-1}) \right| $$ -->
-<div align=center>
+
+$$
+\begin{equation}
+  \text{TV score} := \frac{1}{L-k-1} \sum_{l=1}^{L-k-1}  \left| f^{(k)}(\boldsymbol{y}_l) - f^{(k)}(\boldsymbol{y}_{l-1}) \right|
+\end{equation}
+$$
+
+<!-- <div align=center>
 <img src="ASSETS/step2.png" width="50%" height="50%" />
-</div>
+</div> -->
 
 
 TV score w/o Differential Smoothing when $k = 0$, w/ Differential Smoothing when $k>0$.
@@ -190,9 +208,6 @@ for i in ${category_list[*]}; do
                                        --max_output_token_num $max_output_token_num \
                                        --max_order $max_order
 done
-
-
-
 ```
 
 After computation, all scores will be stored in ```os.environ['PROJECT_PATH']/Data/Score_Data/$model_name```.
